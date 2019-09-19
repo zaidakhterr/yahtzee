@@ -1,41 +1,47 @@
-# yahtzee
+#yahtzee
 
-The Game
-Yahtzee is a chance-and-strategy dice rolling game. A game is played over 13 rounds.
+##Object of the game
 
-Each round, the player rolls five 6-sided dice. They may click on any number of dice to “freeze” or “unfreeze” them (frozen dice are displayed in a different color). They may re-roll the unfrozen dice up to 2 times.
+The object of Yahtzee is to obtain the highest score from throwing 5 dice. The game consists of 13 rounds. In each round, you roll the dice and then score the roll in one of 13 categories. You must score once in each category. The score is determined by a different rule for each category. The game ends once all 13 categories have been scored.
 
-Each round, they must assign their dice to any unclaimed scoring category. Each category scores differently.
+##Game Start
 
-After 13 rounds, the game is over, and the player’s score is the total of each scoring category.
+To start with, roll all the dice. After rolling you can either score the current roll (see below), or re-roll any or all of the dice.
 
-Scoring Categories
-Category Description Example Score
-Ones Score 1 for every 1 1 1 2 3 4 = 2
-Twos Score 2 for every 2 1 2 2 3 4 = 4
-Threes Score 3 for every 3 1 2 3 3 3 = 9
-Fours Score 4 for every 4 1 2 4 4 5 = 8
-Fives Score 5 for every 5 1 2 5 5 5 = 15
-Sixes Score 6 for every 6 1 2 3 6 6 = 12
-3 of Kind If 3+ of one value, score sum of all dice (otherwise, score 0) 1 2 3 3 3 = 12
-4 of Kind If 4+ of one value, score sum of all dice (else 0) 1 2 2 2 2 = 8
-Full House If 3 of one value and 2 of another, score 25 (else 0) 2 2 3 3 3 = 25
-Small Straight If 4+ values in a row, score 30 (else 0) 1 2 3 4 6 = 30
-Large Straight If 5 values in a row, score 40 (else 0) 1 2 3 4 5 = 40
-Yahtzee If all values match, score 50 (else 0) 2 2 2 2 2 = 50
-Chance Score sum of all dice 1 2 3 4 6 = 16
-Example Round
-The initial roll is: 2 4 3 2 5.
+You may only roll the dice a total of 3 times. After rolling 3 times you must choose a category to score.
 
-The player decides to try to get as many twos as possible, and clicks to freeze both twos, then re-rolls, getting a new 2 3 5. They now have: 2 2 3 2 5.
+You may score the dice at any point in the round, i.e. it doesn't have to be after the 3rd roll.
 
-The player decides to try for a full house, and freezes all of their twos and their three (hoping to roll another 3 to get a full house). They re-roll the die showing five, getting a 6 and now have 2 2 3 2 6.
+##Scoring
 
-Sadly, they didn’t get their full house. They could score this as:
+To score your combination of 5 dice, you click one of the 13 boxes, or write it on the scorecard (scoresheet). There are two sections to the score table - the Upper Section and the Lower Section.
 
-Twos: for 6 points
-Threes for 3 points
-Sixes: for 6 points
-Three of Kind: (twos) for 15 points
-Chance: for 15 points
-Any other category they claimed on this round would score 0.
+Once a box has been scored, it cannot be scored again for the rest of the game (except the Yahtzee category), so choose wisely.
+
+###Upper Section Scoring
+
+If you score in the upper section of the table, your score is the total of the specified die face. So if you roll: 5 - 2 - 5 - 6 - 5 and score in the Fives category, your total for the category would be 15, because there are three fives, which are added together. If the One, Three or Four Categories were selected for scoring with this roll, you would score a zero. If placed in the Two or Six category, you would score 2 and 6 respectively.
+
+Bonus If the total of Upper scores is 63 or more, add a bonus of 35. Note that 63 is the total of three each of 1s, 2s, 3s, 4s, 5s and 6s. Did you know there are now some US Casino sites offering electronic Yahtzee-themed slots? Yahtzee is one of the interesting games you could try.
+
+###Lower Section Scoring
+
+In the lower scores, you score either a set amount, or zero if you don't satisfy the category requirements.
+
+3 and 4 of a kind For 3 of a kind you must have at least 3 of the same die faces. You score the total of all the dice. For 4 of a kind you would need 4 die faces the same.
+
+Small and Large Straight A Straight is a sequence of consecutive die faces, where a small straight is 4 consecutive faces, and a large straight 5 consecutive faces. Small straights score 30 and a large 40 points. So if you rolled: 2 - 3 - 2 - 5 - 4 you could score 30 in small straight or 0 in large straight.
+
+Full House A Full House is where you have 3 of a kind and 2 of a kind. Full houses score 25 points. i.e.: 3 - 3 - 2 - 3 - 2 would score 25 in the Full House category.
+
+First Yahtzee A Yahtzee is 5 of a kind and scores 50 points, although you may elect NOT to score it as a yahtzee, instead choosing to take it as a top row score and safegaurd you bonus.
+
+Additional Yahtzees. If you roll a second Yahtzee in a game, and you scored your first yahtzee in the Yahtzee box, you would score a further bonus 100 points in the yahtzee box. You must also put this roll into another category, as follows; -If the corresponding Upper section category is not filled then you must score there. ie if you rolled 4 - 4 - 4 - 4 - 4 and the Fours Category is not filled, you must put the score in the Fours category.
+
+-If the corresponding Upper section category is filled you may then put the score anywhere on the Upper Section (scoring zero). In 3 of a Kind, 4 of a Kind, and Chance categories you would score the total of the die faces. For the Small Straight, Large Straight, and Full House categories, you would score 30, 40 and 25 points respectively.
+
+Chance You can roll anything and be able to put it in the Chance category. You score the total of the die faces.
+
+##Scratch or Dump scores.
+
+You can score any roll in any category at any time, even if the resulting score is zero. Eg, you can take 2-3-3-4-6 in the 5's category. It will score 0. This could be used near the end of a game to lose a poor roll against a difficult-to-get category that you've failed to fill (eg, long straight or yahtzee).
