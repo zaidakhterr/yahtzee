@@ -1,4 +1,5 @@
-/** Rule for Yahtzee scoring.
+/*
+ description:''* Rule for Yahtzee scoring.
  *
  * This is an "abstract class"; the real rules are subclasses of these.
  * This stores all parameters passed into it as properties on the instance
@@ -57,14 +58,26 @@ class SumDistro extends Rule {
 
 /** Check if full house (3-of-kind and 2-of-kind) */
 
-class FullHouse {
-  // TODO
+class FullHouse extends Rule {
+  evalRoll = dice => {
+    const freqs = this.freq(dice);
+    return freqs.includes(2) && freqs.includes(3) ? this.score : 0;
+  };
 }
 
 /** Check for small straights. */
 
-class SmallStraight {
-  // TODO
+class SmallStraight extends Rule {
+  evalRoll = dice => {
+    const d = new Set(dice);
+    //small straigth can be 345 + 2 or 6
+    if ((d.has(3) && d.has(4) && d.has(5) && d.has(2)) || d.has(6))
+      return this.score;
+    //or 234 + 1 or 5
+    else if ((d.has(2) && d.has(3) && d.has(4) && d.has(1)) || d.has(5))
+      return this.score;
+    else return 0;
+  };
 }
 
 /** Check for large straights. */
@@ -72,7 +85,6 @@ class SmallStraight {
 class LargeStraight extends Rule {
   evalRoll = dice => {
     const d = new Set(dice);
-
     // large straight must be 5 different dice & only one can be a 1 or a 6
     return d.size === 5 && (!d.has(1) || !d.has(6)) ? this.score : 0;
   };
@@ -88,29 +100,68 @@ class Yahtzee extends Rule {
 }
 
 // ones, twos, etc score as sum of that value
-const ones = new TotalOneNumber({ val: 1 });
-const twos = new TotalOneNumber({ val: 2 });
-const threes = new TotalOneNumber({ val: 3 });
-const fours = new TotalOneNumber({ val: 4 });
-const fives = new TotalOneNumber({ val: 5 });
-const sixes = new TotalOneNumber({ val: 6 });
+const ones = new TotalOneNumber({
+  val: 1,
+  description: 'Score 1 for every 1',
+});
+const twos = new TotalOneNumber({
+  val: 2,
+  description: 'Score 2 for every 2',
+});
+const threes = new TotalOneNumber({
+  val: 3,
+  description: 'Score 3 for every 3',
+});
+const fours = new TotalOneNumber({
+  val: 4,
+  description: 'Score 4 for every 4',
+});
+const fives = new TotalOneNumber({
+  val: 5,
+  description: 'Score 5 for every 5',
+});
+const sixes = new TotalOneNumber({
+  val: 6,
+  description: 'Score 6 for every 6',
+});
 
 // three/four of kind score as sum of all dice
-const threeOfKind = new SumDistro({ count: 3 });
-const fourOfKind = new SumDistro({ count: 4 });
+const threeOfKind = new SumDistro({
+  count: 3,
+  description: 'If 3 of kind, score sum of all dice',
+});
+const fourOfKind = new SumDistro({
+  count: 4,
+  description: 'If 4 of kind, score sum of all dice',
+});
 
 // full house scores as flat 25
-const fullHouse = 'TODO';
+const fullHouse = new FullHouse({
+  score: 25,
+  description: 'Score 25 for a Full House',
+});
 
 // small/large straights score as 30/40
-const smallStraight = 'TODO';
-const largeStraight = new LargeStraight({ score: 40 });
+const smallStraight = new SmallStraight({
+  score: 30,
+  description: 'Score 30 for a Small Straight',
+});
+const largeStraight = new LargeStraight({
+  score: 40,
+  description: 'Score 40 for a Large Straight',
+});
 
 // yahtzee scores as 50
-const yahtzee = new Yahtzee({ score: 50 });
+const yahtzee = new Yahtzee({
+  score: 50,
+  description: 'Score 50 for a Yahtzee',
+});
 
-// for chance, can view as some of all dice, requiring at least 0 of a kind
-const chance = new SumDistro({ count: 0 });
+// for chance, can view as sum of all dice, requiring at least 0 of a kind
+const chance = new SumDistro({
+  count: 0,
+  description: 'Score sum of all dice',
+});
 
 export {
   ones,
